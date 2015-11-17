@@ -1,0 +1,19 @@
+{
+  "name": "length-converter",
+  "description": "A Converter for typographical lengths",
+  "version": "0.0.1",
+  "homepage": "https://github.com/timtegeler/length-converter",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "angular": "~1.4.0",
+    "bootstrap": "~3.3.5"
+  },
+  "authors": [
+    "Tim Tegeler <tim@tegeler.me>"
+  ],
+  "moduleType": "globals",
+  "ignore": [
+    "**/.*",
+    "app/bower_components"
+  ]
+}

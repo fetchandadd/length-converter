@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="length-converter" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="length-converter" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="length-converter" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="length-converter" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Umrechner für typografische Längenmaße</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bower_components/bootstrap-select/dist/css/bootstrap-select.min.css">
+    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div class="container" ng-controller="calculater">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <br>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Umrechner für typografische Längenmaße</div>
+                <div class="panel-body">
+                    <div class="alert alert-info" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span>&nbsp;Als Umrechnungsbasis wird die zuletzt getätigte Eingabe verwendet.</span>
+                    </div>
+                    <form name="calculator">
+                        <div class="form-group">
+                            <label for="mm"><a
+                                    href="https://de.wikipedia.org/wiki/Meter#Gebr.C3.A4uchliche_dezimale_Vielfache">Millimeter</a></label>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.mm.$valid==0 && calculator.mm.$dirty && isSignedIn('mm'), 'has-success': calculator.mm.$valid==1 && calculator.mm.$dirty && isSignedIn('mm')}">
+                                <input type="text" class="form-control" id="mm" name="mm" ng-model="mm"
+                                       ng-keyup="signIn('mm')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('mm')}" select-on-click>
+                                <span class="input-group-addon">mm</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cm"><a
+                                    href="https://de.wikipedia.org/wiki/Meter#Gebr.C3.A4uchliche_dezimale_Vielfache">Zentimeter</a></label>
+                            <span class="grey">1 <i>cm</i> = 10 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.cm.$valid==0 && calculator.cm.$dirty && isSignedIn('cm'), 'has-success': calculator.cm.$valid==1 && calculator.cm.$dirty && isSignedIn('cm')}">
+                                <input type="text" class="form-control" id="cm" name="cm" ng-model="cm"
+                                       ng-keyup="signIn('cm')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('cm')}" select-on-click>
+                                <span class="input-group-addon">&nbsp;cm</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="dpt"><a
+                                    href="https://de.wikipedia.org/wiki/Schriftgrad#Franz.C3.B6sische_Punkte"
+                                    >Didot-Punkt</a></label> <span class="grey">1 <i>dpt</i> = 0.376 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.dpt.$valid==0 && calculator.dpt.$dirty && isSignedIn('dpt'), 'has-success': calculator.dpt.$valid==1 && calculator.dpt.$dirty && isSignedIn('dpt')}">
+                                <input type="text" class="form-control" id="dpt" name="dpt" ng-model="dpt"
+                                       ng-keyup="signIn('dpt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('dpt')}" select-on-click>
+                                <span class="input-group-addon">dpt</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="ppt"><a href="https://de.wikipedia.org/wiki/Schriftgrad#Amerikanische_Punkte"
+                                    >Pica-Punkt</a></label> <span
+                                class="grey">1 <i>ppt</i> = 0.351 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.ppt.$valid==0 && calculator.ppt.$dirty && isSignedIn('ppt'), 'has-success': calculator.ppt.$valid==1 && calculator.ppt.$dirty && isSignedIn('ppt')}">
+                                <input type="text" class="form-control" id="ppt" name="ppt" ng-model="ppt"
+                                       ng-keyup="signIn('ppt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('ppt')}" select-on-click>
+                                <span class="input-group-addon">ppt</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pt"><a href="https://de.wikipedia.org/wiki/Schriftgrad#DTP-Punkt"
+                                    >DTP-Punkt</a></label> <span class="grey">1 <i>pt</i> = 0.3527 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.pt.$valid==0 && calculator.pt.$dirty && isSignedIn('pt'), 'has-success': calculator.pt.$valid==1 && calculator.pt.$dirty && isSignedIn('pt')}">
+                                <input type="text" class="form-control" id="pt" name="pt" ng-model="pt"
+                                       ng-keyup="signIn('pt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('pt')}" select-on-click>
+                                <span class="input-group-addon">&nbsp;pt</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inch"><a href="https://de.wikipedia.org/wiki/Zoll_%28Einheit%29"
+                                    >Inch</a></label> <span class="grey">1 <i>inch</i> = 25.4 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.inch.$valid==0 && calculator.inch.$dirty && isSignedIn('inch'), 'has-success': calculator.inch.$valid==1 && calculator.inch.$dirty && isSignedIn('inch')}">
+                                <input type="text" class="form-control" id="inch" name="inch" ng-model="inch"
+                                       ng-keyup="signIn('inch')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('inch')}" select-on-click>
+                                <span class="input-group-addon">&nbsp;in</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="q"><a href="https://de.wikipedia.org/wiki/Schriftgrad#Metrischer_Punkt"
+                                    >Quart</a></label> <span class="grey">1 <i>q</i> = 0.25 <i>mm</i></span>
+
+                            <div class="input-group"
+                                 ng-class="{'has-error': calculator.q.$valid==0 && calculator.q.$dirty && isSignedIn('q'), 'has-success': calculator.q.$valid==1 && calculator.q.$dirty && isSignedIn('q')}">
+                                <input type="text" class="form-control" id="q" name="q" ng-model="q"
+                                       ng-keyup="signIn('q')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
+                                       ng-class="{bold: isSignedIn('q')}" select-on-click>
+                                <span class="input-group-addon">&nbsp;&nbsp;q</span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="decimalPlaces"><a href="https://de.wikipedia.org/wiki/Nachkommastelle"
+                                                          target="_blank">Nachkommastellen</a></label><br>
+                            <select class="selectpicker" name="decimalPlaces" id="decimalPlaces"
+                                    ng-model="decimalPlaces" ng-change="calculate();">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-success " ng-click="calculate()"
+                                        ng-disabled="isFormEmpty()">umrechnen
+                                </button>
+                            </div>
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-danger " ng-click="clear()"
+                                        ng-disabled="isFormEmpty()">leeren
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="bower_components/angular/angular.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
