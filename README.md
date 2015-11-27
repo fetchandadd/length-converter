@@ -1,9 +1,27 @@
-# length-converter — A Converter for typographical lengths
+# length-converter — a converter for typographical lengths
 
 ## Install
+
+Start by cloning the repository.
+
+```sh
+$ git clone https://github.com/timtegeler/length-converter.git
+```
+
+Change into the new created directory.
+
+```sh
+$ cd length-converter
+```
+
+Install dependencies with bower.
 
 ```sh
 $ bower install
 ```
 
-This project uses Bower. "Bower works by fetching and installing packages from all over, taking care of hunting, finding, downloading, and saving the stuff you’re looking for. Bower keeps track of these packages in a manifest file, bower.json. How you use packages is up to you. Bower provides hooks to facilitate using packages in your tools and workflows." [bower.io](http://bower.io/)
+Build the docker image and start a container with docker-compose.
+
+```sh
+$ docker-compose up -d
+```
