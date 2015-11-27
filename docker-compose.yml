@@ -1,0 +1,5 @@
+length-converter:
+  container_name: length-converter
+  build: .
+  ports:
+   - "1234:80"
