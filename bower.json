@@ -6,14 +6,21 @@
   "license": "GPL-3.0",
   "dependencies": {
     "angular": "~1.4.0",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "bootstrap-select": "~1.7.5"
   },
   "authors": [
     "Tim Tegeler <tim@tegeler.me>"
   ],
-  "moduleType": "globals",
+  "moduleType": [],
   "ignore": [
     "**/.*",
-    "app/bower_components"
-  ]
+    "app/bower_components",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "main": "",
+  "private": true
 }
