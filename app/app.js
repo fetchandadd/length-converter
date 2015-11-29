@@ -21,6 +21,7 @@ angular.module('length-converter', []).controller('calculater', function ($scope
 
     $scope.decimalPlaces = "4";
     $scope.signedIn = null;
+    $scope.commaReplaced = false;
 
     $scope.isSignedIn = function (id) {
         return id == $scope.signedIn;
@@ -31,13 +32,13 @@ angular.module('length-converter', []).controller('calculater', function ($scope
     };
 
     $scope.calculate = function () {
-        if ($scope.signedIn == "mm") $scope.calc($scope.mm);
-        if ($scope.signedIn == "cm") $scope.calc($scope.fromCmToMm($scope.cm));
-        if ($scope.signedIn == "dpt") $scope.calc($scope.fromDptToMm($scope.dpt));
-        if ($scope.signedIn == "ppt") $scope.calc($scope.fromPptToMm($scope.ppt));
-        if ($scope.signedIn == "pt") $scope.calc($scope.fromPtToMm($scope.pt));
-        if ($scope.signedIn == "inch") $scope.calc($scope.fromInchToMm($scope.inch));
-        if ($scope.signedIn == "q") $scope.calc($scope.fromQToMm($scope.q));
+        if ($scope.signedIn == "mm") $scope.calc($scope.replaceComma($scope.mm));
+        if ($scope.signedIn == "cm") $scope.calc($scope.fromCmToMm($scope.replaceComma($scope.cm)));
+        if ($scope.signedIn == "dpt") $scope.calc($scope.fromDptToMm($scope.replaceComma($scope.dpt)));
+        if ($scope.signedIn == "ppt") $scope.calc($scope.fromPptToMm($scope.replaceComma($scope.ppt)));
+        if ($scope.signedIn == "pt") $scope.calc($scope.fromPtToMm($scope.replaceComma($scope.pt)));
+        if ($scope.signedIn == "inch") $scope.calc($scope.fromInchToMm($scope.replaceComma($scope.inch)));
+        if ($scope.signedIn == "q") $scope.calc($scope.fromQToMm($scope.replaceComma($scope.q)));
     };
 
     $scope.clear = function () {
@@ -53,13 +54,32 @@ angular.module('length-converter', []).controller('calculater', function ($scope
     $scope.clear();
 
     $scope.calc = function (mm) {
-        $scope.mm = $scope.round(mm);
-        $scope.cm = $scope.round($scope.fromMmToCm(mm));
-        $scope.dpt = $scope.round($scope.fromMmToDpt(mm));
-        $scope.ppt = $scope.round($scope.fromMmToPpt(mm));
-        $scope.pt = $scope.round($scope.fromMmToPt(mm));
-        $scope.inch = $scope.round($scope.fromMmToInch(mm));
-        $scope.q = $scope.round($scope.fromMmToQ(mm));
+
+        $scope.mm = $scope.replaceDot($scope.round(mm));
+        $scope.cm = $scope.replaceDot($scope.round($scope.fromMmToCm(mm)));
+        $scope.dpt = $scope.replaceDot($scope.round($scope.fromMmToDpt(mm)));
+        $scope.ppt = $scope.replaceDot($scope.round($scope.fromMmToPpt(mm)));
+        $scope.pt = $scope.replaceDot($scope.round($scope.fromMmToPt(mm)));
+        $scope.inch = $scope.replaceDot($scope.round($scope.fromMmToInch(mm)));
+        $scope.q = $scope.replaceDot($scope.round($scope.fromMmToQ(mm)));
+    };
+
+    $scope.replaceComma = function(value){
+        if(value.indexOf(",") !== -1){
+            $scope.commaReplaced = true;
+            value = value.replace(",", ".");
+        }else{
+            $scope.commaReplaced = false;
+        }
+        return value;
+    };
+
+    $scope.replaceDot = function(value){
+        value = value.toString();
+        if($scope.commaReplaced){
+            value = value.replace(".", ",");
+        }
+        return value
     };
 
     $scope.round = function (number) {
