@@ -23,12 +23,26 @@ angular.module('length-converter', []).controller('calculater', function ($scope
     $scope.signedIn = null;
     $scope.commaReplaced = false;
 
+    $scope.signIn = function (id) {
+        if($scope.calculator[id].$valid && $scope.calculator[id].$dirty) {
+            $scope.signedIn = id;
+        }
+    };
+
     $scope.isSignedIn = function (id) {
         return id == $scope.signedIn;
     };
 
-    $scope.signIn = function (id) {
-        $scope.signedIn = id;
+    function signedInAndDirty(id){
+        return $scope.isSignedIn(id) && $scope.calculator[id].$dirty;
+    }
+
+    $scope.isSignedInAndValid = function(id){
+       return $scope.calculator[id].$valid && signedInAndDirty(id);
+    };
+
+    $scope.isSignedInAndNotValid = function(id){
+        return !$scope.calculator[id].$valid && signedInAndDirty(id);
     };
 
     $scope.calculate = function () {

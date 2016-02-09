@@ -41,7 +41,7 @@
                                     href="https://de.wikipedia.org/wiki/Meter#Gebr.C3.A4uchliche_dezimale_Vielfache">Millimeter</a></label>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.mm.$valid==0 && calculator.mm.$dirty && isSignedIn('mm'), 'has-success': calculator.mm.$valid==1 && calculator.mm.$dirty && isSignedIn('mm')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('mm'), 'has-success': isSignedInAndValid('mm')}">
                                 <input type="text" class="form-control" id="mm" name="mm" ng-model="mm"
                                        ng-keyup="signIn('mm')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('mm')}" select-on-click>
@@ -54,7 +54,7 @@
                             <span class="grey">1 <i>cm</i> = 10 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.cm.$valid==0 && calculator.cm.$dirty && isSignedIn('cm'), 'has-success': calculator.cm.$valid==1 && calculator.cm.$dirty && isSignedIn('cm')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('cm'), 'has-success': isSignedInAndValid('cm')}">
                                 <input type="text" class="form-control" id="cm" name="cm" ng-model="cm"
                                        ng-keyup="signIn('cm')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('cm')}" select-on-click>
@@ -67,7 +67,7 @@
                                     >Didot-Punkt</a></label> <span class="grey">1 <i>dpt</i> = 0.376 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.dpt.$valid==0 && calculator.dpt.$dirty && isSignedIn('dpt'), 'has-success': calculator.dpt.$valid==1 && calculator.dpt.$dirty && isSignedIn('dpt')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('dpt'), 'has-success': isSignedInAndValid('dpt')}">
                                 <input type="text" class="form-control" id="dpt" name="dpt" ng-model="dpt"
                                        ng-keyup="signIn('dpt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('dpt')}" select-on-click>
@@ -80,7 +80,7 @@
                                 class="grey">1 <i>ppt</i> = 0.351 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.ppt.$valid==0 && calculator.ppt.$dirty && isSignedIn('ppt'), 'has-success': calculator.ppt.$valid==1 && calculator.ppt.$dirty && isSignedIn('ppt')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('ppt'), 'has-success': isSignedInAndValid('ppt')}">
                                 <input type="text" class="form-control" id="ppt" name="ppt" ng-model="ppt"
                                        ng-keyup="signIn('ppt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('ppt')}" select-on-click>
@@ -92,7 +92,7 @@
                                     >DTP-Punkt</a></label> <span class="grey">1 <i>pt</i> = 0.3527 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.pt.$valid==0 && calculator.pt.$dirty && isSignedIn('pt'), 'has-success': calculator.pt.$valid==1 && calculator.pt.$dirty && isSignedIn('pt')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('pt'), 'has-success': isSignedInAndValid('pt')}">
                                 <input type="text" class="form-control" id="pt" name="pt" ng-model="pt"
                                        ng-keyup="signIn('pt')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('pt')}" select-on-click>
@@ -104,7 +104,7 @@
                                     >Inch</a></label> <span class="grey">1 <i>inch</i> = 25.4 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.inch.$valid==0 && calculator.inch.$dirty && isSignedIn('inch'), 'has-success': calculator.inch.$valid==1 && calculator.inch.$dirty && isSignedIn('inch')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('inch'), 'has-success': isSignedInAndValid('inch')}">
                                 <input type="text" class="form-control" id="inch" name="inch" ng-model="inch"
                                        ng-keyup="signIn('inch')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('inch')}" select-on-click>
@@ -116,7 +116,7 @@
                                     >Quart</a></label> <span class="grey">1 <i>q</i> = 0.25 <i>mm</i></span>
 
                             <div class="input-group"
-                                 ng-class="{'has-error': calculator.q.$valid==0 && calculator.q.$dirty && isSignedIn('q'), 'has-success': calculator.q.$valid==1 && calculator.q.$dirty && isSignedIn('q')}">
+                                 ng-class="{'has-error': isSignedInAndNotValid('q'), 'has-success': isSignedInAndValid('q')}">
                                 <input type="text" class="form-control" id="q" name="q" ng-model="q"
                                        ng-keyup="signIn('q')" ng-pattern="/^[0-9]*(\,|\.)?[0-9]+$/"
                                        ng-class="{bold: isSignedIn('q')}" select-on-click>
