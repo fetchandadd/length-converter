@@ -22,5 +22,5 @@
     "tests"
   ],
   "main": "",
-  "private": true
+  "private": false
 }

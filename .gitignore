@@ -2,3 +2,4 @@ app/bower_components/
 .DS_Store
 .idea
 docker-*.sh
+node_modules
