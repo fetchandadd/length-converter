@@ -22,3 +22,5 @@ gulp.task('build-css', function () {
         .pipe(minifyCss({compatibility: 'ie8'}))
         .pipe(gulp.dest(dest));
 });
+
+gulp.task('build', ['build-angular', 'build-html', 'build-css']);
